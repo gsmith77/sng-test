@@ -2,9 +2,9 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "sng-test1"
+stack_name = "sng-test"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-19fxlmw37red7"
-s3_prefix = "sng-test1"
+s3_prefix = "sng-test"
 region = "us-west-2"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"

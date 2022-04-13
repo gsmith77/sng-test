@@ -78,8 +78,10 @@ const getVotes = async ctx => {
   if (!Items?.length)
     ctx.throw(400, 'There are no nominees by this award and year.');
   // map over the nominee and push them into an array
-  const nominees = Items.map(({category, firstName, lastName, votes}) => {
-    return {category, firstName, lastName, votes};
+  const nominees = [];
+  Items.map(({category, firstName, lastName, votes, year: yearOfAward}) => {
+    if (year === yearOfAward)
+      nominees.push({category, firstName, lastName, votes});
   });
   ctx.body = {
     awardName,

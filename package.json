@@ -1,6 +1,6 @@
 {
-  "name": "delete-test-01",
-  "description": "delete-test-01-description",
+  "name": "voting-application",
+  "description": "backend voting application to be used by frontend development team.",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -12,10 +12,7 @@
     "koa-body": "^4.2.0",
     "serverless-http": "^3.0.1"
   },
-  "devDependencies": {
-    "jest": "^26.6.3"
-  },
   "scripts": {
-    "test": "jest"
+    "start": "sam local start-api --profile dev --env-vars env.json --docker-network local-api-network -p 3100 --force-image-build --skip-pull-image"
   }
 }

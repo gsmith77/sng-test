@@ -22,8 +22,8 @@ app.use(
   })
 );
 
-_.get('/api/votes/:awardName', getVotes);
-_.post('/api/vote', createVote);
+_.get('/votes/:awardName', getVotes);
+_.post('/vote', createVote);
 
 app.use(_.routes());
 

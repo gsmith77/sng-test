@@ -4,6 +4,11 @@ const https = require('https');
 const createDynamoOptions = () => {
   const options = {};
   options.region = 'us-west-2';
+  options.httpOptions = new https.Agent({
+    keepAlive: true,
+    maxSockets: Infinity,
+  });
+  options.convertEmptyValues = true;
 
   return new AWS.DynamoDB.DocumentClient(options);
 };

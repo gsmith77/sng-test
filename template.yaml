@@ -28,7 +28,7 @@ Resources:
         Api:
           Type: Api
           Properties:
-            Path: /api/{proxy+}
+            Path: /{proxy+}
             Method: any
             RestApiId: !Ref SNGTestApi
   SNGTestApi:
@@ -55,4 +55,4 @@ Resources:
 Mappings:
   env:
     development:
-      tableName: SNGDBTable1
+      tableName: SNGDBTable
