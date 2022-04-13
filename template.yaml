@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >-
+  sng-test
+Transform: AWS::Serverless-2016-10-31
+Parameters:
+  environment:
+    Type: String
+    Description: Which environment do you want to deploy to?
+    Default: development
+
+Globals:
+  Function:
+    Environment:
+      Variables:
+        DYNAMO_TABLE_NAME: !FindInMap [env, !Ref environment, tableName]
+
+Resources:
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/api.handler
+      Role: !Sub 'arn:aws:iam::298484475580:role/sng-test-ApiFunctionRole-1DCEG40RA6SAS'
+      Runtime: nodejs14.x
+      Timeout: 60
+      MemorySize: 512
+      Description: SNG Test
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /api/{proxy+}
+            Method: any
+            RestApiId: !Ref SNGTestApi
+  SNGTestApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: development
+
+  SNGDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !FindInMap [env, !Ref environment, tableName]
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: PK
+          AttributeType: S
+        - AttributeName: SK
+          AttributeType: S
+      KeySchema:
+        - AttributeName: PK
+          KeyType: HASH
+        - AttributeName: SK
+          KeyType: RANGE
+
+Mappings:
+  env:
+    development:
+      tableName: SNGDBTable1
