@@ -18,7 +18,8 @@ Resources:
   ApiFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: src/api.handler
+      Handler: api.handler
+      CodeUri: src/
       Role: !Sub 'arn:aws:iam::298484475580:role/sng-test-ApiFunctionRole-1DCEG40RA6SAS'
       Runtime: nodejs14.x
       Timeout: 60
