@@ -7,12 +7,12 @@ This project contains source code and supporting files for a serverless applicat
 
 The application uses several AWS resources, including Lambda functions, an API Gateway API, and Amazon DynamoDB tables. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
+BEFORE YOU START! Text me at 409-651-2750 to get a Access Key ID and Secret Access Key for my AWS Account so that you can read & write DynamoDB. 
+
 Run to set up AWS role to make DynamoDB calls:
 ```
 rm -rf ~/.aws/credentials
 aws configure
-Access Key ID: AKIAUK7YPU26DI7FIDLJ
-Secret Access Key: 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
 region: us-west-2
 output: json
 source ~/.bash_profile
