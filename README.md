@@ -9,11 +9,13 @@ The application uses several AWS resources, including Lambda functions, an API G
 
 Run:
 ```
+rm -rf ~/.aws/credentials
 aws configure
 Access Key ID: AKIAUK7YPU26DI7FIDLJ
 Secret Access Key: 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
 region: us-west-2
 output: json
+source ~/.bash_profile
 ```
 
 
